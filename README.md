@@ -32,10 +32,16 @@ Logging: Mandatory log file generation with correct timestamps.
 
 
 How to Run:
-1) Ensure Common.cfg and PeerInfo.cfg are in the root directory.
+1) Ensure all .py source files and the .cfg are in the main root directory.
 
-2) Open multiple terminal windows.
+2) The project assumes that subdirectories for each peer (peer_1001, peer_1002, etc) already exist.
 
-3) In each window, run:
-    python peerProcess.py [PeerID]
+3) To run the project, launch via PowerShell in a single window:
+    Start-Process python "peerProcess.py 1001"
+    Start-Process python "peerProcess.py 1002"
+    Start-Process python "peerProcess.py 1003"
+
+This will open each peer in a new, independent terminal where you can monitor the activity and handshakes from each side.
+
+
 
