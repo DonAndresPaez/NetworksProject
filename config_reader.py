@@ -20,7 +20,7 @@ def parseCommonCfg(file_path):
                 config['TotalPieces'] = math.ceil(config['FileSize']/config['PieceSize'])
                 config['LastPieceSize'] = config['FileSize'] % config['PieceSize'] or config['PieceSize']
     return config
-
+    
 def parsePeerInfo(file_path):
     peers = []
     with open(file_path,'r') as f:
