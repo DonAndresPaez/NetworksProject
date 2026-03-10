@@ -12,25 +12,17 @@ A peer-to-peer file sharing system inspired by BitTorrent, implementing the chok
 
 | File | Description |
 |------|-------------|
-| `peerProcess.java` | Main peer process entry point. Reads configs, manages connections, runs choking/unchoking timers, and coordinates file exchange. |
-| `ConnectionHandler.java` | Handles a single TCP connection with another peer. Manages handshake, message sending/receiving, and protocol state. |
-| `FileManager.java` | Manages file pieces: reading/writing pieces, bitfield tracking, and assembling the complete file. |
-| `PeerLogger.java` | Writes log entries for all protocol events (connections, choke/unchoke, piece downloads, etc.). |
-| `CommonConfig.java` | Parses `Common.cfg` configuration file. |
-| `PeerInfo.java` | Parses `PeerInfo.cfg` peer information file. |
-| `StartRemotePeers.java` | Utility to start all peer processes (locally or via SSH on remote hosts). |
+| `peerProcess.py` | Main peer process entry point. Reads configs, manages connections, runs choking/unchoking timers, and coordinates file exchange. |
+| `connection_handler.py` | Handles a single TCP connection with another peer. Manages handshake, message sending/receiving, and protocol state. |
+| `file_manager.py` | Manages file pieces: reading/writing pieces, bitfield tracking, and assembling the complete file. |
+| `peer_logger.py` | Writes log entries for all protocol events (connections, choke/unchoke, piece downloads, etc.). |
+| `common_config.py` | Parses `Common.cfg` configuration file. |
+| `peer_info.py` | Parses `PeerInfo.cfg` peer information file. |
+| `StartRemotePeers.py` | Utility to start all peer processes (locally or via SSH on remote hosts). |
 
-## How to Compile
+## Requirements
 
-```bash
-javac peerProcess.java
-```
-
-Or compile all files:
-
-```bash
-javac *.java
-```
+Python 3.7+ (no external dependencies — uses only the standard library).
 
 ## How to Run
 
@@ -45,15 +37,15 @@ javac *.java
 Start each peer **in the order listed in `PeerInfo.cfg`**:
 
 ```bash
-java peerProcess 1001
-java peerProcess 1002
-java peerProcess 1003
+python peerProcess.py 1001
+python peerProcess.py 1002
+python peerProcess.py 1003
 ```
 
 Or use the startup utility to launch all peers:
 
 ```bash
-java StartRemotePeers
+python StartRemotePeers.py
 ```
 
 ### Example with localhost

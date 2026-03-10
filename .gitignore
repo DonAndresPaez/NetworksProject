@@ -1,3 +1,4 @@
-*.class
 *.log
+*.pyc
+__pycache__/
 peer_*/
