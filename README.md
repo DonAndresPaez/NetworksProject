@@ -32,10 +32,35 @@ Logging: Mandatory log file generation with correct timestamps.
 
 
 How to Run:
+
+Option 1: Automated (Jupyter Notebook)
+
 1) Ensure Common.cfg and PeerInfo.cfg are in the root directory.
 
-2) Open multiple terminal windows.
+2) Open main.ipynb in Jupyter Notebook or VS Code.
 
-3) In each window, run:
+3) Run the cells in order (click run all):
+    - Step 1: Loads and displays the configuration.
+    - Step 2: Launches all peers automatically as background processes.
+    - Step 3: View log output from all peers (re-run anytime to refresh).
+    - Step 4: Check which peers are still running.
+    - Step 5: Stop all peers when finished.
+
+
+Option 2: Manual (Multiple Terminals)
+
+1) Ensure Common.cfg and PeerInfo.cfg are in the root directory.
+
+2) Open multiple terminal windows (one per peer).
+
+3) In each window, run in ascending order of PeerID:
     python peerProcess.py [PeerID]
+
+   Example:
+    Terminal 1: python peerProcess.py 1001
+    Terminal 2: python peerProcess.py 1002
+    ...
+    Terminal 9: python peerProcess.py 1009
+
+4) Stop each peer with Ctrl+C.
 
