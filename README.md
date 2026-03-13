@@ -5,6 +5,27 @@ Patric McCormack
 Jack Ozerovitch
 Andres Paez
 
+
+Contributions
+
+Maksym Marek
+- networking.py: TCP server/client architecture, connection threading, receive loop
+- test_file_transfer.py: End-to-end file piece transfer test
+- main.ipynb: Jupyter automation notebook (peer launching, log viewing, test cell)
+
+Patric McCormack
+- peerProcess.py: Main entry point, peer initialization, thread orchestration
+- bitfield.py: Bitfield construction, serialization, piece tracking
+
+Jack Ozerovitch
+- handshake.py: 32-byte handshake protocol, struct packing/unpacking, verification
+- message_handler.py: Message protocol, type constants, create/parse functions
+
+Andres Paez
+- config_reader.py: Common.cfg and PeerInfo.cfg parsing, piece count calculations
+- logger.py: Timestamped log file generation per peer
+
+
 Project Structure
 
 peerProcess.py -> Main entry point. Initializes the configurations, starts the logger, builds the bitfield, and launches the service/client threads.
@@ -46,6 +67,7 @@ Option 1: Automated (Jupyter Notebook)
     - Step 4: Check which peers are still running.
     - Step 5: Stop all peers when finished.
 
+*IMPORTANT* Proper funcaitonality will indicate peer 102 creates a new file.
 
 Option 2: Manual (Multiple Terminals)
 
