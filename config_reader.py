@@ -37,6 +37,4 @@ def parsePeerInfo(file_path):
             })
     return peers
 
-
-
             

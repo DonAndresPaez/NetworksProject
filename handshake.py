@@ -8,7 +8,6 @@ def create_handshake(peer_id):
     header = b"P2PFILESHARINGPROJ"
     
     # We use the header to create the full message here.
-    # The '>' means "Big Endian"
     return struct.pack(">18s10xI", header, peer_id)
 
 
