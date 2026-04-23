@@ -24,12 +24,20 @@ class FileManager:
         """
         if has_file:
             if not os.path.exists(self.file_path):
-                print(f"[FileManager] WARNING: peer_{self.peer_id} marked has_file=1 but file not found at {self.file_path}")
+                raise FileNotFoundError(
+                    f"[FileManager] peer_{self.peer_id} marked has_file=1 but file not found at {self.file_path}"
+                )
+
+            actual_size = os.path.getsize(self.file_path)
+            if actual_size != self.file_size:
+                raise ValueError(
+                    f"[FileManager] peer_{self.peer_id} seed file size mismatch: "
+                    f"expected {self.file_size} bytes, found {actual_size} bytes at {self.file_path}"
+                )
         else:
-            # Create empty file if it doesn't exist
-            if not os.path.exists(self.file_path):
-                with open(self.file_path, 'wb') as f:
-                    f.write(b'\x00' * self.file_size)
+            # Always reset placeholder to exact expected size from Common.cfg.
+            with open(self.file_path, 'wb') as f:
+                f.write(b'\x00' * self.file_size)
 
     def get_piece(self, index):
         """Read and return the bytes for a given piece index."""
