@@ -13,18 +13,19 @@ def main():
     print("--- [Initialization] Starting Peer Process ---")
 
     if len(sys.argv) < 2:
-        print("[Error] Usage: python peerProcess.py [PeerID]")
+        print("[Error] Usage: python peerProcess.py [PeerID] [PeerInfoFile(optional)]")
         return
 
     my_id = int(sys.argv[1])
+    peer_info_file = sys.argv[2] if len(sys.argv) >= 3 else 'PeerInfo.cfg'
 
     try:
         common_cfg = parseCommonCfg('Common.cfg')
-        peer_list = parsePeerInfo('PeerInfo.cfg')
+        peer_list = parsePeerInfo(peer_info_file)
 
         my_info = next((p for p in peer_list if p['id'] == my_id), None)
         if not my_info:
-            print(f"[Error] Peer {my_id} not found in PeerInfo.cfg")
+            print(f"[Error] Peer {my_id} not found in {peer_info_file}")
             return
 
         has_file = my_info['has_file']
